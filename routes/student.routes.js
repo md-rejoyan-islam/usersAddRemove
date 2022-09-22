@@ -18,7 +18,7 @@ const {
 router.get("/", homepage);
 router.get("/create", addStudentPage);
 router.get("/unverified", unverifiedPage);
-router.post("/create", photoUploaderMulter, createStudent);
+router.post("/createData", photoUploaderMulter, createStudent);
 router.get("/edit/:id", editStudent);
 router.get("/verify/:token", verifyAccount);
 router.post("/update/:id", photoUploaderMulter, updateData);
