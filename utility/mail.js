@@ -1,9 +1,13 @@
 const nodeMailer = require("nodemailer");
 const dotenv = require("dotenv").config();
-const host = process.env.MAIL_HOST;
-const port = process.env.MAIL_PORT;
-const user = process.env.MAIL_USER;
-const pass = process.env.MAIL_PASS;
+// const host = process.env.MAIL_HOST;
+// const port = process.env.MAIL_PORT;
+// const user = process.env.MAIL_USER;
+// const pass = process.env.MAIL_PASS;
+const host = "smtp.gmail.com";
+const port = 587;
+const user = "rejoyanislam2222@gmail.com";
+const pass = "qfxjtembvxgcjper";
 
 //create transport
 const verifyAccountMail = async (to, subject, data) => {
