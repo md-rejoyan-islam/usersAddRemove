@@ -17,7 +17,7 @@ git clone https://github.com/RejoyanIslam/usersAddRemove.git
 * Nodemailer
 * Twilio
 
-### Uploader link
+### Social Media Link
  [linkedin](https://www.linkedin.com/in/rej0yanislam/)
 
  [twitter](https://twitter.com/rej0yanislam)
