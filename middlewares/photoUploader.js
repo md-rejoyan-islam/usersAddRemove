@@ -7,7 +7,10 @@ const imageStorage = multer.diskStorage({
     cd(null, path.join(__dirname, "../public/images/students"));
   },
   filename: (req, file, cd) => {
-    cd(null, file.originalname);
+    cd(
+      null,
+      Date.now() + "_" + Math.floor(Math.random() * 10000000) +"_"+ file.originalname
+    );
   },
 });
 const studentPhotoMulter = multer({
