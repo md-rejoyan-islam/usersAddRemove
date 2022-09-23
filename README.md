@@ -1,4 +1,4 @@
-## User add remove using NodeJS
+## USER add remove project
 ***
 ### Git clone link
 ```console
@@ -17,7 +17,6 @@ git clone https://github.com/RejoyanIslam/usersAddRemove.git
 * Nodemailer
 * Twilio
 
-### Social Media Link
- [linkedin](https://www.linkedin.com/in/rej0yanislam/)
-
- [twitter](https://twitter.com/rej0yanislam)
+***
+### Live Project Link
+ [heroku](https://showstudent.herokuapp.com/students)
