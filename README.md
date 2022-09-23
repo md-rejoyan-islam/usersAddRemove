@@ -7,8 +7,8 @@ git clone https://github.com/RejoyanIslam/usersAddRemove.git
 
 
 ### Packages
-    * Express
-    * Nodemon
+* Express
+* Nodemon
     * Colors
     * Dotenv
     * Multer
