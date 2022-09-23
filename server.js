@@ -5,7 +5,7 @@ const pageRoute = require("./routes/student.routes");
 
 //require template  engine
 const expressLayout = require("express-ejs-layouts");
-
+  
 //init express
 const app = express();
 
@@ -24,11 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 //ejs init
 app.set("view engine", "ejs");
 app.use(expressLayout);
-
+ 
 //change layout file
 app.set("layout", "layouts/layout");
 
-//routes
+//routes    
 app.use("/students", pageRoute);
 
 //server listen

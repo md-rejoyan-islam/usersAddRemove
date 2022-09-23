@@ -63,6 +63,45 @@
           }
         });
       }
+
+
+
+//sms
+
+ const smsSubmit=document.getElementById('smsSubmit')
+ 
+    
+    if(smsSubmit){
+        smsSubmit.onclick=()=>{
+          const inputValue=document.getElementById('inputValue').value
+          const tokenValue=document.getElementById('smsTokenField').getAttribute('value')
+          
+          if(Number(inputValue) == Number(tokenValue)){
+            window.location.href=`/students/smsVerifyByToken/${inputValue}`
+            console.log('ok');
+          }else{
+            
+            console.log('no');
+          }
+          
+          // const wrong=document.getElementById('wrong')
+          // if(inputValue === tokenValue){
+          //   // window.location.url=`/students/smsVerify/`
+          //   console.log('ok')
+          // }else{
+          //   // wrong.innerHTML='wrong value'
+          //   console.log('no');
+          //   console.log(inputValue);
+          //   console.log(tokenValue);
+          // }
+    }
+    }
+
+
+
+
+
+
     </script>
   </body>
 </html>

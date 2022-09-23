@@ -28,12 +28,12 @@
                             <td><%= student.name%></td>
                             <td><%= student.email %></td>
                             <td><%= student.phone %></td>
-                            <td><a href="" class="btn btn-warning">verify by phone</a></td>
+                            <td><a href="/students/smsVerify/<%= student.id%>"   class="btn btn-warning">verify by phone</a></td>
                             <td>
                                 <% if (student.photo=='avater.webp') { %>
-                                <img src="/images/<%= student.photo %> " alt="" class="p-0 upload-img"">
+                                <img src="/images/<%= student.photo%> " alt="" class="p-0 upload-img"">
                                 <% } else { %>
-                                 <img src="/images/students/<%= student.photo %> " alt="" class="p-0 upload-img"">
+                                 <img src="/images/students/<%= student.photo%> " alt="" class="p-0 upload-img"">
                             <% }  %>
                         </td>
                             <td style="width:112px;">
@@ -49,7 +49,35 @@
             </div>
         </div>
     </div>
-</section>
+
+
+
+
+
+
+
+
+<!-- </section>
+
+<script>
+
+    const smsSubmit=document.getElementById('smsSubmit')
+    
+    if(smsSubmit){
+        smsSubmit.onclick=()=>{
+          const inputValue=document.getElementById('inputValue').value
+          const tokenValue=document.getElementById('smsToken').getAttribute('value')
+          const wrong=document.getElementById('wrong')
+          if(inputValue==tokenValue){
+            window.location.url=`/students/smsVerify/${inputValue}`
+          }else{
+            wrong.innerHTML='wrong value'
+          }
+    }
+    }
+    
+
+</script> -->
 
 
 

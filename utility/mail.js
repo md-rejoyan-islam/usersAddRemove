@@ -76,10 +76,10 @@ const verifyAccountMail = async (to, subject, data) => {
           </p>
           <br>
           <div style="text-align:center;">
-          <a href="https://showstudent.herokuapp.com/students/verify/${data.token}" style="background-color:rgb(245, 20, 20);padding:10px 20px;border-radius: 5px;">Verify Your Email</a></div> 
+          <a href="http://127.0.0.7:5002/students/verify/${data.token}" style="background-color:rgb(245, 20, 20);padding:10px 20px;border-radius: 5px;">Verify Your Email</a></div> 
           <br>
           <p>Or, copy and paste the following URL into your browser:</p>
-          <p><a href="" style="background-color:white;color: rgb(23, 92, 231);text-decoration:underline;">https://showstudent.herokuapp.com/students/verify/${data.token}</a></p>
+          <p><a href="" style="background-color:white;color: rgb(23, 92, 231);text-decoration:underline;">http://127.0.0.7:5002/students/verify/${data.token}</a></p>
         </div>
         </div>
       </div>

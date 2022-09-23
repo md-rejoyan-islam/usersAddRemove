@@ -1,6 +1,9 @@
 const { readFileSync, writeFileSync } = require("fs");
 const path = require("path");
 const verifyAccountMail = require("../utility/mail");
+const smsSEND = require("../utility/sms");
+
+
 
 //students page
 const homepage = (req, res) => {
@@ -33,9 +36,10 @@ const unverifiedPage = (req, res) => {
   );
   res.render("students/unverify", {
     student: unverifiedStudent,
-    title: "unverified student",
+    title: "unverified student"
   });
 };
+
 
 // student add form by post method
 const createStudent = async (req, res) => {
@@ -44,7 +48,9 @@ const createStudent = async (req, res) => {
   );
   const { name, email, location, photo, phone } = req.body;
   let lastId = 1;
+   const smsVerificationCode = Math.floor(Math.random() * 100000);
   const token = Date.now() + "_" + Math.floor(Math.random() * 1000000);
+    
   if (student.length > 0) {
     lastId = student[student.length - 1].id + 1;
   } else {
@@ -59,8 +65,11 @@ const createStudent = async (req, res) => {
     location,
     isVerified: false,
     token,
+    smsToken: smsVerificationCode
   });
   await verifyAccountMail(email, "testing", { name, token });
+
+
   writeFileSync(
     path.join(__dirname, "../DB/studentData.json"),
     JSON.stringify(student)
@@ -141,6 +150,7 @@ const verifyAccount = (req, res) => {
   student[student.findIndex((student) => student.token == token)] = {
     ...student[student.findIndex((student) => student.token == token)],
     token: null,
+    smsToken:null,
     isVerified: true,
   };
   writeFileSync(
@@ -149,6 +159,45 @@ const verifyAccount = (req, res) => {
   );
   res.redirect("/students");
 };
+
+//sms verify
+const smsVerifyAccount =async (req,res)=>{
+  
+  const { id } = req.params;
+  const student = JSON.parse(
+    readFileSync(path.join(__dirname, "../DB/studentData.json"))
+  );
+  const idStudent = student.find((student) => student.id == id);
+  const {phone,smsToken} = student.find((student) => student.id == id);
+  await smsSEND(phone, smsToken);
+  res.render("students/smsVerify", {
+    title: "smsVerification",
+    student: idStudent,
+  });
+}
+
+const smsVerifyRoute = (req, res) => {
+  const { token } = req.params;
+ 
+  const student = JSON.parse(
+    readFileSync(path.join(__dirname, "../DB/studentData.json"))
+  );
+  student[student.findIndex((student) => student.smsToken == token)] = {
+    ...student[student.findIndex((student) => student.smsToken == token)],
+    token: null,
+    smsToken:null,
+    isVerified: true,
+  };
+  console.log(student);
+  writeFileSync(
+    path.join(__dirname, "../DB/studentData.json"),
+    JSON.stringify(student)
+  );
+  res.redirect('/students')
+};
+
+
+
 
 // exports controllers
 module.exports = {
@@ -161,4 +210,6 @@ module.exports = {
   deleteSingleData,
   unverifiedPage,
   verifyAccount,
+  smsVerifyAccount,
+  smsVerifyRoute,
 };
